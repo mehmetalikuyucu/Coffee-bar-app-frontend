@@ -1,0 +1,133 @@
+import type { NextPage } from "next";
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import {
+  Box,
+  IconButton,
+  Image,
+  Stack,
+  Text,
+  HStack,
+  Center,
+  Stat,
+  StatLabel,
+  StatNumber,
+  Button,
+  ButtonSpinner,
+  VStack,
+  color,
+  StackDivider,
+  Divider,
+} from "@chakra-ui/react";
+import {
+  StarIcon,
+  PhoneIcon,
+  ArrowLeftIcon,
+  EmailIcon,
+  ChevronLeftIcon,
+  SearchIcon,
+  SettingsIcon,
+  InfoIcon,
+} from "@chakra-ui/icons";
+import { AiFillGift } from "react-icons/Ai";
+import { data } from "../../data/data";
+import BottomNavBar from "../../components/BottomNavBar/index";
+{
+  /* MAPPİNGLER BU ŞEKİLDE İLERDE */
+}
+{
+  /* {data.map((item, id) => (
+          <Text key={id} w={25} h={25} bg={"red"}>
+            {item.id}
+          </Text>
+        ))} */
+}
+
+const Home: NextPage = () => {
+  return (
+    <Box w={"100vw"} h={"100vh"}>
+      <VStack spacing={5} overflowY={"auto"} paddingBottom={"2vh"}>
+        <HStack
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          w={"80vw"}
+          mt={"10vw"}
+        >
+          <IconButton
+            aria-label="Go Back"
+            variant={"unstyled"}
+            icon={
+              <ChevronLeftIcon
+                boxSize={"40px"}
+                color={"#5CA4B8"}
+              ></ChevronLeftIcon>
+            }
+          ></IconButton>
+          <Text fontWeight={"bold"} fontSize={"5vw"}>
+            Gift Page
+          </Text>
+          <IconButton
+            aria-label="Settings"
+            variant={"unstyled"}
+            icon={<InfoIcon boxSize={"22.5px"} color={"#5CA4B8"}></InfoIcon>}
+          ></IconButton>
+        </HStack>
+        <Divider w={"85vw"} borderColor={"black"} shadow={"base"}></Divider>
+        {/*  box */}
+        <GiftBoxBuilder />
+        <GiftBoxBuilder />
+        <GiftBoxBuilder />
+        <GiftBoxBuilder />
+        <GiftBoxBuilder />
+      </VStack>
+      <Box h={"7vh"}></Box>
+
+      <BottomNavBar />
+    </Box>
+  );
+};
+
+function GiftBoxBuilder() {
+  return (
+    <Box
+      h="20vh"
+      w={"90vw"}
+      bg="#8DC1D0"
+      borderRadius={10}
+      boxShadow={"base"}
+      display={"flex"}
+      alignItems={"center"}
+      justifyContent={"space-between"}
+      paddingX={"5vw"}
+    >
+      <IconButton
+        boxSize={"12.5vw"}
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        boxShadow={"dark-lg"}
+        backgroundColor={"white"}
+        aria-label="Call Segun"
+        size="sl"
+        color={"#D89191"}
+        _active={{
+          color: "#D0A9A9",
+        }}
+        variant={"unstyled"}
+        icon={<AiFillGift size={50}></AiFillGift>}
+      ></IconButton>
+
+      <Box>
+        <Text fontSize={22} fontWeight={"bold"}>
+          Caffe Latte
+        </Text>
+        <Text fontSize={16} fontWeight={"semibold"} color={"white"}>
+          11/04/2000
+        </Text>
+      </Box>
+      <Image w={"20vw"} src={data[1].img} alt="Dan Abramov" />
+    </Box>
+  );
+}
+
+export default Home;
